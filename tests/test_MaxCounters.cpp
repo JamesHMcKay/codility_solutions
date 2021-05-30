@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "gtest/gtest.h"
-#include "MaxCounters.hpp"
+#include "solutions.hpp"
 
 using namespace std;
 using std::vector;

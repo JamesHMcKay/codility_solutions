@@ -1,10 +1,60 @@
-#include <vector>
-#include "MaxCounters.hpp"
+// You are given N counters, initially set to 0, and you have two possible operations on them:
 
-using namespace std;
-using std::vector;
+// increase(X) − counter X is increased by 1,
+// max counter − all counters are set to the maximum value of any counter.
+// A non-empty array A of M integers is given. This array represents consecutive operations:
+
+// if A[K] = X, such that 1 ≤ X ≤ N, then operation K is increase(X),
+// if A[K] = N + 1 then operation K is max counter.
+// For example, given integer N = 5 and array A such that:
+
+//     A[0] = 3
+//     A[1] = 4
+//     A[2] = 4
+//     A[3] = 6
+//     A[4] = 1
+//     A[5] = 4
+//     A[6] = 4
+// the values of the counters after each consecutive operation will be:
+
+//     (0, 0, 1, 0, 0)
+//     (0, 0, 1, 1, 0)
+//     (0, 0, 1, 2, 0)
+//     (2, 2, 2, 2, 2)
+//     (3, 2, 2, 2, 2)
+//     (3, 2, 2, 3, 2)
+//     (3, 2, 2, 4, 2)
+// The goal is to calculate the value of every counter after all operations.
+
+// Write a function:
+
+// vector<int> solution(int N, vector<int> &A);
+
+// that, given an integer N and a non-empty array A consisting of M integers, returns a sequence of integers representing the values of the counters.
+
+// Result array should be returned as a vector of integers.
+
+// For example, given:
+
+//     A[0] = 3
+//     A[1] = 4
+//     A[2] = 4
+//     A[3] = 6
+//     A[4] = 1
+//     A[5] = 4
+//     A[6] = 4
+// the function should return [3, 2, 2, 4, 2], as explained above.
+
+// Write an efficient algorithm for the following assumptions:
+
+// N and M are integers within the range [1..100,000];
+// each element of array A is an integer within the range [1..N + 1].
+
+#include <vector>
+#include "solutions.hpp"
+
 namespace MaxCounters {
-    std::vector<int> get_new_counter(int N, int value) {
+    std::vector<int> get_counter(int N, int value) {
         std::vector<int> counters;
         for (int i = 0; i < N; i++) {
             counters.push_back(value);
@@ -13,27 +63,28 @@ namespace MaxCounters {
     }
 
     std::vector<int> solution(int N, std::vector<int> &A) {
-        int num_operations = A.size();
-
-        std::vector<int> counters = get_new_counter(N, 0);
+        std::vector<int> counters = get_counter(N, 0);
         int max_counter = 0;
         int min_counter = 0;
+
+        int num_operations = A.size();
         for (int i = 0; i < num_operations; i++) {
             if (A[i] <= N) {
-                if (counters[A[i] - 1] < min_counter) {
-                    counters[A[i] - 1] = min_counter;
+                int index = A[i] - 1;
+                if (counters[index] < min_counter) {
+                    counters[index] = min_counter;
                 }
 
-                counters[A[i] - 1] = counters[A[i] - 1] + 1;
-                if (counters[A[i] - 1] > max_counter) {
-                    max_counter = counters[A[i] - 1];
+                counters[index] = counters[index] + 1;
+                if (counters[index] > max_counter) {
+                    max_counter = counters[index];
                 }
             } else {
                 min_counter = max_counter;
             }
         }
 
-        for (unsigned int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) {
             if (counters[i] < min_counter) {
                 counters[i] = min_counter;
             }

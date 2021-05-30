@@ -1,7 +1,7 @@
 #include <iostream>
-#include "MaxCounters.hpp"
+#include "solutions.hpp"
 
 int main() {
-    cout << "Codility solutions" << endl;
+    std::cout << "Codility solutions" << std::endl;
     return 0;
 }

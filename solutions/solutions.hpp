@@ -1,11 +1,10 @@
-#ifndef MAXCOUNTER_HPP
-#define MAXCOUNTER_HPP
+#ifndef SOLUTIONS_HPP
+#define SOLUTIONS_HPP
 
 #include <vector>
-
-using namespace std;
 
 namespace MaxCounters {
     std::vector<int> solution(int N, std::vector<int> &A);
 }
+
 #endif
