@@ -7,7 +7,7 @@
 using namespace std;
 using std::vector;
 
-TEST(feature, create) {
+TEST(MaxCounters, solution) {
     std::vector<int> test;
     test.push_back(1);
     test.push_back(2);
