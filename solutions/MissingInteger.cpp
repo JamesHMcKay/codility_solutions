@@ -1,10 +1,26 @@
+// Write a function:
+
+// int solution(vector<int> &A);
+
+// that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+
+// For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+
+// Given A = [1, 2, 3], the function should return 4.
+
+// Given A = [−1, −3], the function should return 1.
+
+// Write an efficient algorithm for the following assumptions:
+
+// N is an integer within the range [1..100,000];
+// each element of array A is an integer within the range [−1,000,000..1,000,000].
+
 #include <set>
 #include <vector>
 #include "solutions.hpp"
 
 namespace MissingInteger {
     int solution(std::vector<int> &A) {
-        // write your code in C++14 (g++ 6.2.0)
         std::set<int> values;
         int number_of_elements = A.size();
         for (int i = 0; i < number_of_elements; i++) {
@@ -19,7 +35,6 @@ namespace MissingInteger {
             if (*it > 0) {
                 counter = counter + 1;
             }
-            
         }
         return counter;
     }
