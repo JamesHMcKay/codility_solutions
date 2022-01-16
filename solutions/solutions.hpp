@@ -24,4 +24,8 @@ namespace GenomicRangeQuery {
     std::vector<int> solution(std::string &S, std::vector<int> &P, std::vector<int> &Q);
 }
 
+namespace NumberSolitaire {
+    int solution(std::vector<int> &A);
+}
+
 #endif
